@@ -24,7 +24,9 @@ export default {
 
 <style lang="scss">
 @import './assets/_variable.scss';
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 body {
+  font-family: 'Lato', Helvetica, Arial, sans-serif;
   max-width: 1200px;
   padding: 1rem;
   margin: auto;
@@ -35,9 +37,6 @@ body {
   }
 }
 .app {
-  font-family: Lato, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   color: $primarycolor;
   max-width: 100%;
   header{
@@ -117,8 +116,8 @@ body {
   }
   h1{
     max-width: 100%;
-    margin: 0.5rem 0;
-    font-size: 1.2rem;
+    margin: 1rem 0;
+    font-size: 2rem;
   }
   h2{
     margin: 0.5rem 0;
