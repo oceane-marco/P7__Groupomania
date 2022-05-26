@@ -140,7 +140,11 @@ body {
     object-fit: cover;
     border-radius: 100%;
   }
-  @media (max-width: 700px) {
+  img{
+    object-fit: cover;
+  }
+  @media (
+    max-width: 700px) {
     h1{
       margin: 0.5rem 0;
       font-size: 0.5rem;
