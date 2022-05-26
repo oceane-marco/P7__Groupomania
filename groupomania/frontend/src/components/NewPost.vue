@@ -101,11 +101,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+@import '../assets/_variable.scss';
 .newPostCard{
     border-radius: 10px;
-    background: #521111;
-    color: #fff;
+    background: $primarycolor;
+    color: $background;
     padding: 1rem;
     margin: 1rem 0;
     display: flex;
@@ -141,8 +141,8 @@ export default {
             height: 40px;
             margin-bottom: 25px;
             display: flex;
-            background-color: #c4c4c4;
-            color: #521111;
+            background-color: $secondarycolor;
+            color: $primarycolor;
             justify-content: center;
             align-items: center;
             font-size: 14px;
@@ -182,8 +182,8 @@ export default {
             border: none;
             margin: 0;
             padding: 0.5rem;
-            background: #FFF;
-            color: #521111;
+            background: $background;
+            color: $primarycolor;
             text-align: start;
           
         }

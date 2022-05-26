@@ -182,6 +182,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../assets/_variable.scss';
  .laodposts{
   width: 100%;
  }
@@ -192,12 +193,11 @@ export default {
   display: flex ;
   justify-content: flex-end;
   flex-direction: column;
-  background-color: #fff;
+  background-color: $background;
   border-radius: 10px;
   margin: 1rem 0 ;
   padding: 1rem;
   max-width: 100%;
-  color: #521111;
   &__contenaire{
     display: flex;
     flex-direction: column;
@@ -211,7 +211,7 @@ export default {
       &__info{
         display: flex ;
         p{
-          color: #979797;
+          color: $tertiarycolor;
           font-size: 0.8rem;
           margin: 0.5rem 0;
           text-align: start;

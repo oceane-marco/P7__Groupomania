@@ -113,6 +113,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/_variable.scss';
     .comments{
         width: 85%;
         margin-left:3.5rem;
@@ -121,18 +122,7 @@ export default {
             margin:0;
         }
     }
-    .toCommentButton {
-        height: 60px;
-        width: 100%;
-        padding: 5px;
-        background-color: transparent;
-        text-decoration: none;
-        border: none;
-        border-top: #fff 2px solid;
-        font-weight: 700;
-        font-size: 1em;
-        cursor: pointer;
-    }
+    
     .sendComment {
         display: flex;
         flex-direction: row;
@@ -151,7 +141,7 @@ export default {
             height: 40px;
             padding: 0.2rem;
             flex-grow: 4;
-            border: #521111 solid 3px ;
+            border: $secondarycolor solid 3px ;
             border-radius: 10px;
         }
         &__button {
@@ -159,7 +149,6 @@ export default {
             border: none;
             padding: 1rem;
             background-color: #fff;
-            color: #521111;
             display: flex;
             justify-content: left;
             align-items: left;
@@ -168,7 +157,7 @@ export default {
                 outline: none;
             }
             &__icon {
-                color: #521111;
+                color: $primarycolor;
             }
         }
         &__addFileInput {
@@ -176,21 +165,21 @@ export default {
         }
     }
     .conteneurComments{
-        background: #521111;
+        border: 3px solid $primarycolor;
         padding: 1rem;
         margin: 0.5rem;
         border-radius: 10px;
         display: flex;
         align-items: center;
         text-align: center;
-        color: #fff;
+        color: $tertiarycolor;
         .profile__info{
             display: flex;
             align-items: center;
         }
         p{
             flex-grow: 4;
-            color: #fff;
+            color: $tertiarycolor;
         }
     }
 </style>

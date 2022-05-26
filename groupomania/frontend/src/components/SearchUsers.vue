@@ -67,6 +67,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/_variable.scss';
 .searchView{
   max-width: 100%;
   margin: 0;
@@ -81,7 +82,7 @@ export default {
       align-items: baseline;
       padding: 1rem;
       margin: 0;
-      background-color: #521111;
+      background-color: $primarycolor;
       color: #fff;
       border-radius:  10px 0 0 10px ;
     }
@@ -98,7 +99,7 @@ export default {
     flex-wrap: wrap;
     border-radius: 10px;
     padding: 1rem;
-    background-color: #fff;
+    background-color: $secondarycolor;
   }
   .conterbtn{
     display: flex;
@@ -107,8 +108,8 @@ export default {
   }
   .profil{
     display: flex ; 
-    background-color: #521111;
-    color: #fff;
+    background-color: $primarycolor;
+    color: $secondarycolor;
     justify-content: space-between;
     align-items: center;
     border-radius: 10px;

@@ -14,6 +14,7 @@
 
 <script>
 import NavBar from './components/NavBar.vue'
+
 export default {
   components: {
     NavBar,
@@ -22,21 +23,22 @@ export default {
 </script>
 
 <style lang="scss">
+@import './assets/_variable.scss';
 body {
   max-width: 1200px;
   padding: 1rem;
   margin: auto;
-  background-color: #d4d4d4;
+  background-color: $secondarycolor;
   @media (max-width: 700px) {
     width:100%;
     margin: 0;
   }
 }
 .app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Lato, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #521111;
+  color: $primarycolor;
   max-width: 100%;
   header{
     display: flex;
@@ -61,9 +63,9 @@ body {
         font-weight: bold;
         padding: 1rem;
         color: #FFF;
-        background: #521111;
+        background: $primarycolor;
         &.router-link-exact-active {
-          background: #791111;
+          opacity: 0.5;
         }
       }
       @media (max-width: 700px) {
@@ -93,24 +95,24 @@ body {
   a {
     height: 50px;
     text-decoration: none;
-    color: #521111;
+    color: $primarycolor;
   }
   
   button{
     border: none;
-    background-color: #521111;
-    color: #FFF;
+    background-color: $primarycolor;
+    color: $background;
     padding: 0.5rem ;
     margin: 0.8px;
     border-radius: 5px;
     transition: transform ease-in 0.1s;
     transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
     &:hover{
-      background-color: #890000;
+      opacity: 0.8;
     }
     &:active{
-      background-color: #890000;
-       transform: scale(0.9);
+      opacity: 0.5;
+      transform: scale(0.9);
     }
   }
   h1{

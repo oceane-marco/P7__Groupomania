@@ -1,8 +1,10 @@
 <template> 
+<div class="admin">
+ <h1>bienvenue sur la page d'administration {{this.user.name}} ! </h1>
   <div class="formregitre">
-    <h2>bienvenue sur la page d'administration {{this.user.name}} ! </h2>
+    
       <div class="imgcontainer">
-        <img src="../assets/icon.svg" alt="Avatar" class="avatar">
+        <img src="../assets/iconAvatar.svg" alt="Avatar" class="avatar">
       </div>
     <form v-on:submit.prevent="submit">
       <div class="container">
@@ -21,6 +23,8 @@
       </div>
     </form>
   </div>
+</div>
+ 
 </template>
 
 <script>
@@ -79,7 +83,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+@import '../assets/_variable.scss';
+.admin{
+  text-align: center;
+}
 /* Bordered form */
 .formregitre {
   margin: 1rem auto;
@@ -87,7 +94,8 @@ export default {
   display: flex;
   flex-direction: column;
   border-radius: 30px;
-  background-color: #521111;
+  background-color: $background;
+  color: $secondarycolor;
   max-width: 30%;
   @media (max-width: 700px) {
     padding: 1rem;
@@ -95,15 +103,16 @@ export default {
   }
 }
 label{
-  color: #fff;
+  color:$tertiarycolor;
 }
 
 /* Full-width inputs */
 input[type=text], input[type=password] {
   padding: 1rem;
   border-radius: 10px;
-  background-color: #fff;
+  background-color: $background;
   margin: 8px auto;
+  border: none;
   box-sizing: border-box;
   width: 100%;
 }
@@ -112,19 +121,12 @@ button {
   margin: 0 auto;
   margin-top: 1rem;
   padding: 1rem;
-  background-color: #E8E8E8;
-  color: #521111;
   padding: 1rem;
   border: none;
   border-radius: 10px;
   cursor: pointer;
   width: 100%;
   
-}
-
-/* Add a hover effect for buttons */
-button:hover {
-  background-color: #ccc;
 }
 
 

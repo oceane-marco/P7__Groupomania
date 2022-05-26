@@ -1,7 +1,7 @@
 <template>
   <div class="formLogin">
       <div class="imgcontainer">
-        <img src="../assets/icon.svg" />
+        <img src="../assets/iconAvatar.svg" />
       </div>
     <form v-on:submit.prevent="submit">
       <div class="container">
@@ -55,6 +55,7 @@ export default {
 </script>
 
 <style lang="scss" >
+  @import '../assets/_variable.scss';
 
 /* Bordered form */
 .formLogin {
@@ -64,23 +65,25 @@ export default {
   display: flex;
   flex-direction: column;
   border-radius: 30px;
-  background-color: #521111;
+  background-color: $background;
   max-width: 30%;
-  color: #fff;
+  color: $background;
   @media (max-width: 700px) {
     max-width:100%;
   }
   label{
+    color: $tertiarycolor;
     padding: 1rem;
   }
   /* Full-max-width inputs */
     input[type=text], input[type=password] {
       padding: 1rem;
       border-radius: 10px;
-      background-color: #fff;
+      background-color: $secondarycolor;
+      color: $tertiarycolor;
       margin: 8px 0;
       display: inline-block;
-      border: 1px solid #ccc;
+      border: none;
       box-sizing: border-box;
       max-width: 100%;
     }
@@ -89,8 +92,6 @@ export default {
       margin: 0 auto;
       margin-top: 1rem;
       padding: 1rem;
-      background-color: #E8E8E8;
-      color: #521111;
       padding: 1rem;
       border: none;
       border-radius: 10px;
@@ -98,12 +99,6 @@ export default {
       width: 100%;
       
     }
-
-  /* Add a hover effect for buttons */
-    button:hover {
-      background-color: #ccc;
-    }
-
 
   /* Center the image inside this container */
     .imgcontainer {

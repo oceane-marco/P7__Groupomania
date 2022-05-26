@@ -72,6 +72,7 @@ export default {
 
 </script>
 <style lang="scss" scoped>
+@import '../assets/_variable.scss';
 form{
     display: flex;
     flex-direction: column;
@@ -83,7 +84,7 @@ form{
         padding: 0.5rem ;
         margin: 0.5rem 0;
         border-radius: 10px;
-        border: 3px solid #c4c4c4;
+        border: 3px solid $secondarycolor;
     }
 }
 
