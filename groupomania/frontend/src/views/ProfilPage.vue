@@ -4,12 +4,13 @@
       <img v-if="this.User.img" :src="this.User.img" alt="image du profil" class="imgProfil">
       <img v-else src="../assets/iconAvatar.svg" alt="image du profil" class="imgProfil">
       <h1>{{this.User.name}}</h1>
-      <button v-if="user.id == User.id" v-on:click.prevent="switchToUpdate(User.id);name=User.name;image=User.image" title="modifier mon profil"><i class="fa-solid fa-pen-to-square icon"></i></button>
-      <button v-if="user.id == User.id" v-on:click="confirmDeleteUser(user.id)" title="suprimer mon compte" ><i class="fa-solid fa-trash-can icon"></i> Suprimer Mon Compte</button>
-       <button v-if="user.id !== User.id && isAdmin" v-on:click="confirmDeleteUser(user.id)" title="suprimer le compte"><i class="fa-solid fa-trash-can icon"></i> Suprimer ce Compte</button>
+      <div class="profil__user__btn">
+        <button v-if="user.id == User.id" v-on:click.prevent="switchToUpdate(User.id);name=User.name;image=User.image" title="modifier mon profil"><i class="fa-solid fa-pen-to-square icon"></i></button>
+        <button v-if="user.id == User.id" v-on:click="confirmDeleteUser(user.id)" title="suprimer mon compte" ><i class="fa-solid fa-trash-can icon"></i> Suprimer Mon Compte</button>
+        <button v-if="user.id !== User.id && isAdmin" v-on:click="confirmDeleteUser(User.id)" title="suprimer le compte"><i class="fa-solid fa-trash-can icon"></i> Suprimer ce Compte</button>
+      </div>
     </div>
     <div v-if="UpdateId == user.id" class="profil__fromuser">
-      
       <div class="formLogin">
         <div class="imgcontainer">
           <img v-if="this.User.img" :src="this.User.img" alt="image du profil" class="imgProfil">
@@ -168,9 +169,13 @@ export default {
       })
     },
     deleteUser(id){
-    
       axios.delete("http://localhost:3000/api/users/" + id,{ headers: { Authorization: "Bearer " + this.token },})
         .then((res) => {
+          if (this.isAdmin) {
+            alert('ustilisateur suprimer ainsi que tout ses posts, commentaire et réactions')
+            this.$router.push('/')
+            return;
+          }
           console.log(res);
           let user = {
             name: "",
@@ -310,11 +315,19 @@ export default {
     display: flex;
     align-items: center;
     text-align: center;
+    &__btn{
+      display: flex;
+      align-items: center;
+      text-align: center;
+    }
     .button{
       width: content;
     }
     .icon{
       font-size: 1.1rem;
+    }
+    @media (max-width: 700px) {
+      flex-direction: column;
     }
   }
 }

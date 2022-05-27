@@ -17,7 +17,7 @@
           </div>
           <div class="postCard__contenaire__profile__btn">
           <button v-if="user.id == post.user_id" v-on:click.prevent="switchToUpdate(post.id)" title="modifier"><i class="fa-solid fa-pen-to-square"></i></button>
-          <button v-if="isAdmin === true || this.user.id == post.user_id" @click.prevent="confirmDelete(post.id)" v-on:click="DeletePost(post.id)" title="supprimer"><i class="fa-solid fa-trash-can"></i></button>
+          <button v-if="isAdmin === true || this.user.id == post.user_id" @click.prevent="confirmDelete(post.id)" title="supprimer"><i class="fa-solid fa-trash-can"></i></button>
           </div>
         </div>  
         <div v-if="UpdateId == post.id" >  

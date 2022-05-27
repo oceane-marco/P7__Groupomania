@@ -1,4 +1,6 @@
 const Posts = require("../models/posts");
+const React = require("../models/reactions");
+const Comment = require("../models/comments");
 const fs = require("fs");
 
 
@@ -110,17 +112,14 @@ exports.update = (req, res) => {
       else  {res.status(201).send(data);}
     });
   })
-  //.catch((error) => res.status(500).json({ error }));
 };
 
 exports.delete = (req, res) => {
   Posts.delete(req.params.id, (err, data) => {
     if (err) {
-      if (err.kind === "not_found") {
-        res.status(404).send({ message: `Not found Post with id ${req.params.id}.`, });
-      } else {
-        res.status(500).send({ message: "Could not delete Post with id " + req.params.id, });
-      }
-    } else res.send({ message:`Post was deleted successfully!` });
+      res.status(500).send({ message: "Could not delete Post with id " + req.params.id,});
+      return ;
+    }
+    res.send({ message: `Post was deleted successfully!` });
   });
 };

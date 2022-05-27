@@ -22,9 +22,6 @@ export default {
     computed:{
         ...mapGetters(["isAuthenticated","isAdmin"]),
         ...mapState(["user","token"]),  
-        reactUser(){
-            return this.ReactsPost.filter( react => react.user_id == this.userId)
-        }
     },
     props: {
         EmojisPost: [Object],
@@ -40,7 +37,7 @@ export default {
     },
     methods: {
         reaction(post_id, emoji_id){
-            if (this.mode=="add") {
+            if (this.mode == "add") {
                 this.mode = "update"
                 const React = {
                     user_id: this.user.id,
@@ -59,7 +56,7 @@ export default {
                 });
                 return
             }
-            if (this.mode=="update") {
+            if (this.mode == "update") {
                 const React = {
                     emoji_id: emoji_id,
                 }
@@ -72,18 +69,19 @@ export default {
                 .catch((error) => {
                     console.log(error);
                 });
+                return
             }
+        },
+        delete(){
+
         },
         switchMode(){
             this.$emit("loadEmoji")
-            console.log(this.userReact);
             if(this.userReact){
                 this.mode="update"
             } else{
                 this.mode="add"
             }
-            console.log(this.mode);
-            
         },
     }, 
     mounted() {
@@ -101,6 +99,7 @@ export default {
             display: flex;
             width: 100%;
             justify-content: space-between;
+            flex-flow: wrap;
             padding: 1rem 0;
             button{  
                 font-size: 30px;

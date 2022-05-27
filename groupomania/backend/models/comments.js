@@ -14,7 +14,6 @@ Comments.getCommentPost = (post_id, result) => {
   getCommentByPostID = `SELECT comments.*, users.name, users.img FROM comments INNER JOIN posts ON posts.id = comments.post_id INNER JOIN users ON users.id = comments.user_id WHERE posts.id = ${post_id}`;
   mysql.query(getCommentByPostID, (err, res) => {
     if (err) {
-      console.log("error: ", err);
       result(null, err);
       return;
     }
@@ -68,6 +67,25 @@ Comments.delete = (id, result) => {
       return;
     }
     console.log("deleted comment with id: ", id);
+    result(null, res);
+  });
+};
+Comments.deleteFromPost = (id, result) => {
+  mysql.query("DELETE FROM comments WHERE post_id = ?", id, (err, res) => {
+    if (err) {
+      result(null, err);
+      return;
+    }
+    result(null, res);
+  });
+};
+Comments.deleteFromUser = (id, result) => {
+  mysql.query("DELETE FROM comments WHERE user_id = ?", id, (err, res) => {
+    if (err) {
+      result(null, err);
+      return;
+    }
+
     result(null, res);
   });
 };

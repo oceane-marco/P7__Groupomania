@@ -79,13 +79,7 @@ Posts.update = (id, post, result) => {
 Posts.delete = (id, result) => {
   mysql.query("DELETE FROM posts WHERE id = ?", id, (err, res) => {
     if (err) {
-      console.log("error: ", err);
       result(null, err);
-      return;
-    }
-    if (res.affectedRows == 0) {
-      // not found post with the id
-      result({ kind: "not_found" }, null);
       return;
     }
     console.log("deleted post with id: ", id);

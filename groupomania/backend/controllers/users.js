@@ -1,6 +1,9 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const fs = require("fs");
+const Post = require("../models/posts");
+const React = require("../models/reactions");
+const Comment = require("../models/comments");
 
 
 // passwordValidator import
@@ -70,7 +73,7 @@ exports.login = (req, res) => {
       if (!valid) {
         return res.status(401).json({ message: "Mot de passe incorrect !" });
       } 
-      res.status(200).json({ token: jwt.sign({ userId: data.id, userauth: data.isAdmin}, process.env.TOKEN, { expiresIn: "48h",}), user:data });
+      res.status(200).json({ token: jwt.sign({ userId: data.id}, process.env.TOKEN, { expiresIn: "48h",}), user:data });
     });
   });
 };
@@ -167,17 +170,11 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
   Users.delete(req.params.id, (err, data) => {
     if (err) {
-      if (err.kind === "not_found") {
-        res
-          .status(404)
-          .send({ message: `Not found user with id ${req.params.id}.` });
-      } else {
-        res
-          .status(500)
-          .send({
-            message: "Could not delete user with id " + req.params.id,
-          });
-      }
-    } else res.status(200).send({ message: `user was deleted successfully!` });
+      res.status(500).send({
+        message: "Could not delete user with id " + req.params.id,
+      });
+      return;
+    }
+    res.status(200).send({ message: `user was deleted successfully!` });
   });
 };

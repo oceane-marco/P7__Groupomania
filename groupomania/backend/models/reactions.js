@@ -19,11 +19,9 @@ Reacts.getReactPost = (post_id, result) => {
   WHERE reactions.post_id  = ${post_id}`;
   mysql.query(getReactByPostID, (err, res) => {
     if (err) {
-      console.log("error: ", err);
       result(null, err);
       return;
     }
-    console.log("React: ", res);
     result(null, res);
   });
 };
@@ -31,11 +29,9 @@ Reacts.getReactPost = (post_id, result) => {
 Reacts.create = (newReact, result) => {
   mysql.query("INSERT INTO reactions SET ?", newReact, (err, res) => {
     if (err) {
-      console.log("error: ", err);
       result(err, null);
       return;
     }
-    console.log("created reactions: ", {  ...newReact });
     result(null, { ...newReact });
   });
 };
@@ -45,16 +41,9 @@ Reacts.update = (id, post, react, result) => {
     `UPDATE reactions SET emoji_id = ? WHERE user_id = ${id} AND post_id = ${post}`,
     [react.emoji_id], (err, res) => {
       if (err) {
-        console.log("error: ", err);
         result(null, err);
         return;
       }
-      if (res.affectedRows == 0) {
-        // not found post with the id
-        result({ kind: "not_found" }, null);
-        return;
-      }
-      console.log("updated react: ", { ...react });
       result(null, { ...react });
     }
   );
@@ -65,18 +54,13 @@ Reacts.delete = (id, post, result) => {
     `DELETE FROM reactions WHERE user_id = ${id} AND post_id = ${post}`,
     (err, res) => {
       if (err) {
-        console.log("error: ", err);
         result(null, err);
         return;
       }
-      if (res.affectedRows == 0) {
-        // not found React with the id
-        result({ kind: "not_found" }, null);
-        return;
-      }
-      console.log("deleted reactions with id: ", id);
       result(null, res);
     }
   );
 };
+
+
 module.exports = Reacts;
