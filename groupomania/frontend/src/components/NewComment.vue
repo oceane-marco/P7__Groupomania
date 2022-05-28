@@ -129,13 +129,9 @@ export default {
         justify-content: space-between;
         align-items: center;
         margin: 0;
+        padding: 0.5rem 0;
         width: 100%;
         border-radius: 10px;
-        &__image {
-            height: 100%;
-            padding: 1rem;
-            margin: 0;
-        }
         &__input {
             width: 70%;
             height: 40px;
@@ -167,7 +163,7 @@ export default {
     .conteneurComments{
         border: 3px solid $primarycolor;
         padding: 1rem;
-        margin: 0.5rem;
+        margin-bottom: 0.5rem;
         border-radius: 10px;
         display: flex;
         align-items: center;

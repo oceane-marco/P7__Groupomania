@@ -133,9 +133,9 @@ body {
     color: #575656;
   } 
   .avatar {
-    margin-right:1rem;
     width: 50px;
     height: 50px;
+    padding: 0.5rem;
     border-radius: 50%;
     object-fit: cover;
     border-radius: 100%;
