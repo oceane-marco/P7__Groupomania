@@ -35,7 +35,7 @@
       </div>
       <div class="View">
         <div v-if="view == `emoji${post.id}`">
-          <NewEmoji  @loadEmoji="loadReact(post.id)" :ReactsPost="this.React" :EmojisPost="this.Emojis" :userId="user.id" :postId="post.id" :userReact="userHaveReact" />
+          <NewEmoji  @loadReact="loadReact(post.id)" :ReactsPost="this.React" :EmojisPost="this.Emojis" :userId="user.id" :postId="post.id" :userReact="userHaveReact" />
         </div>
         <div v-if="mode == `CommentsViews${post.id}`" >
           <NewComment @loadComments="loadComments(post.id)" :CommentsPost="this.Comments" :postId="post.id" />
@@ -142,13 +142,13 @@ export default {
       })
       .then((res) => {
         this.React = res.data;
-          for(var i = 0; i < this.React.length; i++) {
-            if (this.React[i].user_id == this.user.id && this.React[i].post_id == idPost  ) {
-              this.userHaveReact = "add";
-            }else {
-              this.userHaveReact = "update"
-            }
-          }
+        this.userHaveReact = "add";
+        for(var i = 0; i < this.React.length; i++) {
+          if (this.React[i].user_id == this.user.id ) {
+            this.userHaveReact = "update";
+          } 
+        }
+         console.log("in post :",this.userHaveReact);
       })
       .catch((error) => {
           console.log(error);

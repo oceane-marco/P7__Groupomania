@@ -43,8 +43,7 @@ Users.get = (email, result) => {
        result(null, {message :"aucun utilisateur trouver"});
        return;
       }
-      let hashedPassword = res[0].password;
-      result(null, res[0], hashedPassword);
+      result(null, res[0]);
   });
 };
 

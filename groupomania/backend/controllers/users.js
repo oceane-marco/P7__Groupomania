@@ -66,9 +66,9 @@ exports.login = (req, res) => {
   // log
   let email = req.body.email;
   ///err
-  Users.get(email, (err, data, hashedPassword) => {
+  Users.get(email, (err, data) => {
     if (err) res.status(500).send({ err });
-    let password = hashedPassword;
+    let password = data.password;
     bcrypt.compare(req.body.password, password).then((valid) => {
       if (!valid) {
         return res.status(401).json({ message: "Mot de passe incorrect !" });

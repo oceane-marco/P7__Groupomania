@@ -25,7 +25,7 @@ export default {
     },
     props: {
         EmojisPost: [Object],
-        ReactsPost: Object,
+        ReactsPost: [Object],
         userId :Number,
         postId: Number,
         userReact: String,
@@ -38,7 +38,6 @@ export default {
     methods: {
         reaction(post_id, emoji_id){
             if (this.mode == "add") {
-                this.mode = "update"
                 const React = {
                     user_id: this.user.id,
                     post_id: post_id,
@@ -48,7 +47,6 @@ export default {
                     headers: { Authorization: "Bearer " + this.token },
                 })
                 .then(() => {
-                    this.mode = "update"
                     this.switchMode()
                 })
                 .catch((error) => {
@@ -72,16 +70,16 @@ export default {
                 return
             }
         },
-        delete(){
-
+         switchMode(){
+            this.$emit("loadReact", this.addMode())
         },
-        switchMode(){
-            this.$emit("loadEmoji")
+        addMode() {
             this.mode = this.userReact
-        },
+            console.log("mode",this.mode);
+        }
     }, 
     mounted() {
-        this.switchMode()
+       this.switchMode()
     },
 }
 </script>
