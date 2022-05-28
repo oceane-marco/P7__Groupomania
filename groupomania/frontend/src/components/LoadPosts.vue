@@ -137,7 +137,6 @@ export default {
       });
     },
     loadReact(idPost) {
-      console.log(idPost);
       axios.get(`http://localhost:3000/api/posts/react/${idPost}`, {
           headers: { Authorization: "Bearer " + this.token },
       })
