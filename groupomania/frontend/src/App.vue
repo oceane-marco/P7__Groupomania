@@ -61,10 +61,13 @@ body {
         text-decoration: none;
         font-weight: bold;
         padding: 1rem;
-        color: #FFF;
+        color: $background;
         background: $primarycolor;
         &.router-link-exact-active {
           opacity: 0.5;
+        }
+        &:hover{
+          opacity: 0.8;
         }
       }
       @media (max-width: 700px) {
@@ -76,16 +79,7 @@ body {
       flex-direction: column;
     }
   }
-  @keyframes scale-up-center {
-      0% {
-          -webkit-transform: scale(1);
-                  transform: scale(1);
-      }
-      100% {
-          -webkit-transform: scale(1.5);
-                  transform: scale(1.5);
-      }
-  }
+
  
 }
  #View{
