@@ -117,7 +117,7 @@ export default {
       Posts:[],
       Comments: [],
       React:[],
-      userHasReact:false,
+      userHaveReact:"",
       Emojis:[],
     }
   },
@@ -137,7 +137,6 @@ export default {
       })
       .then((res) => {
         this.User = res.data;
-        //document.getElementById("fileInput").value='';
         
       })
       .catch((error) => {
@@ -272,7 +271,13 @@ export default {
       })
       .then((res) => {
         this.React = res.data;
-       
+        for(var i = 0; i < this.React.length; i++) {
+          if (this.React[i].user_id == this.user.id && this.React[i].post_id == idPost  ) {
+            this.userHaveReact = "add";
+          }else {
+            this.userHaveReact = "update"
+          }
+        }
       })
       .catch((error) => {
           console.log(error);

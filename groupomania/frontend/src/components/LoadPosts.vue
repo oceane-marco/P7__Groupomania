@@ -145,9 +145,9 @@ export default {
         this.React = res.data;
           for(var i = 0; i < this.React.length; i++) {
             if (this.React[i].user_id == this.user.id && this.React[i].post_id == idPost  ) {
-              this.userHaveReact = true;
+              this.userHaveReact = "add";
             }else {
-              this.userHaveReact = false
+              this.userHaveReact = "update"
             }
           }
       })

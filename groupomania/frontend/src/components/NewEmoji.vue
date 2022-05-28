@@ -28,7 +28,7 @@ export default {
         ReactsPost: Object,
         userId :Number,
         postId: Number,
-        userReact: Boolean,
+        userReact: String,
     },
     data() {
         return {
@@ -49,7 +49,7 @@ export default {
                 })
                 .then(() => {
                     this.mode = "update"
-                    this.$emit("loadEmoji")
+                    this.switchMode()
                 })
                 .catch((error) => {
                     console.log(error);
@@ -64,7 +64,7 @@ export default {
                     headers: { Authorization: "Bearer " + this.token },
                 })
                 .then(() => {
-                    this.$emit("loadEmoji")
+                    this.switchMode()
                 })
                 .catch((error) => {
                     console.log(error);
@@ -77,15 +77,10 @@ export default {
         },
         switchMode(){
             this.$emit("loadEmoji")
-            if(this.userReact){
-                this.mode="update"
-            } else{
-                this.mode="add"
-            }
+            this.mode = this.userReact
         },
     }, 
     mounted() {
-        this.$emit("loadEmoji")
         this.switchMode()
     },
 }
